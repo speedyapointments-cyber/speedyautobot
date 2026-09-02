@@ -8,8 +8,6 @@ import { SHOP } from "@/lib/shop";
 const STORAGE_KEY = "speedy-shop-session";
 
 export default function LoginPage() {
-  const [username, setUsername] = useState<string>(SHOP.shopLogin);
-  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [authed, setAuthed] = useState(false);
 
@@ -25,10 +23,14 @@ export default function LoginPage() {
     }
   }, []);
 
-  function onSubmit(e: FormEvent) {
+  function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setError("");
-    const user = username.trim().toLowerCase();
+    const data = new FormData(e.currentTarget);
+    const user = String(data.get("username") ?? "")
+      .trim()
+      .toLowerCase();
+    const password = String(data.get("password") ?? "");
     if (user !== SHOP.shopLogin || password !== SHOP.shopPassword) {
       setError("Invalid shop credentials. Use shop login speedy704.");
       return;
@@ -43,11 +45,10 @@ export default function LoginPage() {
   function logout() {
     localStorage.removeItem(STORAGE_KEY);
     setAuthed(false);
-    setPassword("");
   }
 
   return (
-    <AppShell hideNav={false}>
+    <AppShell>
       <div className="px-5 py-6">
         <p className="animate-rise text-xs font-medium tracking-[0.24em] text-[var(--gold)] uppercase">
           Staff access
@@ -58,7 +59,7 @@ export default function LoginPage() {
         </p>
 
         {authed ? (
-          <div className="panel animate-rise mt-6 space-y-4">
+          <div className="panel animate-rise mt-6 space-y-4" data-testid="shop-authed">
             <p className="text-xs tracking-[0.18em] text-[var(--ink-muted)] uppercase">
               Signed in as
             </p>
@@ -80,16 +81,20 @@ export default function LoginPage() {
             </div>
           </div>
         ) : (
-          <form onSubmit={onSubmit} className="animate-rise-delay-3 mt-6 space-y-4">
+          <form
+            onSubmit={onSubmit}
+            className="animate-rise-delay-3 mt-6 space-y-4"
+            data-testid="shop-login-form"
+          >
             <div className="space-y-2">
               <label className="text-sm text-[var(--ink-muted)]" htmlFor="shop-user">
                 Shop username
               </label>
               <input
                 id="shop-user"
+                name="username"
                 className="field"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                defaultValue={SHOP.shopLogin}
                 autoComplete="username"
                 required
               />
@@ -100,13 +105,12 @@ export default function LoginPage() {
               </label>
               <input
                 id="shop-pass"
+                name="password"
                 type="password"
                 className="field"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                defaultValue={SHOP.shopPassword}
                 autoComplete="current-password"
                 required
-                placeholder="speedy704"
               />
             </div>
             {error ? (
@@ -118,7 +122,7 @@ export default function LoginPage() {
                 Shop login: <span className="text-[var(--gold)]">{SHOP.shopLogin}</span>
               </p>
             )}
-            <button type="submit" className="btn-gold">
+            <button type="submit" className="btn-gold" data-testid="shop-login-submit">
               Sign in to shop
             </button>
           </form>
