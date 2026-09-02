@@ -122,7 +122,11 @@ export default function LoginPage() {
                 Shop login: <span className="text-[var(--gold)]">{SHOP.shopLogin}</span>
               </p>
             )}
-            <button type="submit" className="btn-gold" data-testid="shop-login-submit">
+            <button
+              type="submit"
+              className="btn-gold relative z-10 mb-2"
+              data-testid="shop-login-submit"
+            >
               Sign in to shop
             </button>
           </form>
