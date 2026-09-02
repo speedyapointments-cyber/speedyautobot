@@ -1,2 +1,25 @@
-# speedyautobot
-  Speedy Mobile Auto Repair  As an independently owned auto repair shop, we cater to all makes and models of vehicles. Our commitment to excellence drives us to maintain our status as a leading auto repair service, and we strive to earn your trust every step of the way. With a focus on delivering the highest level of service, 
+# Speedy Mobile Auto Repair
+
+Phone app for **Speedy Mobile Auto Repair** (Charlotte, NC) — black & gold.
+
+## Features
+
+- **Home** — brand hero, call & book CTAs
+- **Book** — ARI portal (`https://portal.ari.app/b/kCHD15A2N0Vobeo5jdgZhwQBJTA3`)
+- **Track** — job status by phone / confirmation code
+- **Rate** — star reviews
+- **Apply** — join the crew
+- **Shop login** — `speedy704` / `speedy704`
+
+## Run
+
+```bash
+npm install
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
+
+## Stack
+
+Next.js (App Router) · React · Tailwind CSS
