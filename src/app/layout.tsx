@@ -17,7 +17,7 @@ const teko = Teko({
 export const metadata: Metadata = {
   title: "Speedy Mobile Auto Repair",
   description:
-    "Independently owned mobile auto repair in Charlotte, NC. Book, track, rate, and apply — all makes and models.",
+    "Speedy Mobile Auto Repair — we come to you or you come to us. Charlotte, NC. Book, track, rate, and apply.",
   applicationName: "Speedy Mobile Auto Repair",
   appleWebApp: {
     capable: true,
