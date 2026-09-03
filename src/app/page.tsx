@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { AppShell } from "@/components/AppShell";
+import { TextAvaButton } from "@/components/TextAvaButton";
 import { SHOP } from "@/lib/shop";
 
 export default function HomePage() {
@@ -22,13 +22,25 @@ export default function HomePage() {
           <p className="animate-rise-delay-2 mt-4 max-w-[28ch] text-[0.98rem] text-[var(--ink-muted)]">
             {SHOP.tagline}. Independently owned. Excellence on every visit.
           </p>
+
           <div className="animate-rise-delay-3 mt-7 flex flex-col gap-3">
-            <Link href="/book" className="btn-gold cta-pulse">
-              Book Service
-            </Link>
-            <a href={`tel:${SHOP.phoneTel}`} className="btn-ghost">
-              Call {SHOP.phone}
+            <a
+              href={SHOP.bookUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-gold cta-pulse"
+            >
+              Book
             </a>
+            <a href={`tel:${SHOP.roadsideTel}`} className="btn-ghost">
+              24 Hour Roadside
+            </a>
+            <div>
+              <TextAvaButton className="btn-ghost" />
+              <p className="muted mt-2 text-center text-xs">
+                Text START first so we can reply.
+              </p>
+            </div>
           </div>
         </div>
       </section>
