@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { AppShell } from "@/components/AppShell";
+import { TextAvaButton } from "@/components/TextAvaButton";
 import { SHOP } from "@/lib/shop";
 
 export default function HomePage() {
@@ -9,7 +10,7 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(212,175,55,0.18),transparent_40%)]" />
         <div className="relative flex min-h-[78dvh] flex-col justify-end px-5 pb-8 pt-16">
           <p className="animate-rise text-xs font-medium tracking-[0.28em] text-[var(--gold)] uppercase">
-            Charlotte · Mobile &amp; Shop
+            Charlotte · Mechanic network
           </p>
           <h1
             className="animate-rise-delay-1 mt-2 max-w-[12ch] text-[clamp(3.2rem,14vw,4.4rem)] leading-[0.88] font-semibold uppercase text-[var(--ink)]"
@@ -17,23 +18,46 @@ export default function HomePage() {
           >
             <span className="gold-text">Speedy</span>
             <br />
-            Mobile Auto Repair
+            Network
           </h1>
-          <p className="animate-rise-delay-2 mt-4 max-w-[28ch] text-[0.98rem] text-[var(--ink-muted)]">
-            {SHOP.tagline}. Independently owned. Excellence on every visit.
+          <p className="animate-rise-delay-2 mt-4 max-w-[32ch] text-[0.98rem] text-[var(--ink-muted)]">
+            {SHOP.tagline}. Book a job, get roadside help, or text Ava — Marvin
+            matches qualified mechanics and sends the work out.
           </p>
+
           <div className="animate-rise-delay-3 mt-7 flex flex-col gap-3">
-            <Link href="/book" className="btn-gold cta-pulse">
-              Book Service
-            </Link>
-            <a href={`tel:${SHOP.phoneTel}`} className="btn-ghost">
-              Call {SHOP.phone}
+            <a
+              href={SHOP.bookUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-gold cta-pulse"
+            >
+              Book
             </a>
+            <a href={`tel:${SHOP.roadsideTel}`} className="btn-ghost">
+              24 Hour Roadside
+            </a>
+            <div>
+              <TextAvaButton className="btn-ghost" />
+              <p className="muted mt-2 text-center text-xs">
+                Text START first so we can reply.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       <section className="px-5 py-8">
+        <div className="panel animate-rise">
+          <h2 className="section-title text-[1.9rem]!">How the network works</h2>
+          <p className="muted mt-3 text-sm">{SHOP.networkBlurb}</p>
+          <Link href="/apply" className="mt-4 inline-block text-sm text-[var(--gold-bright)]">
+            Mechanics: Apply with qualifications →
+          </Link>
+        </div>
+      </section>
+
+      <section className="px-5 pb-8">
         <div className="panel animate-rise">
           <h2 className="section-title text-[1.9rem]!">Hours</h2>
           <ul className="mt-4 space-y-2 text-sm">

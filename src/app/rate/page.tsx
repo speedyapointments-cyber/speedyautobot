@@ -24,8 +24,8 @@ export default function RatePage() {
         </p>
         <h1 className="section-title animate-rise-delay-1 mt-2">Rate your visit</h1>
         <p className="muted animate-rise-delay-2 mt-3 text-sm">
-          Tell us how Speedy did. Your review helps us stay the leading mobile
-          repair crew in Charlotte.
+          Rate your Speedy Network visit. Reviews help Marvin keep the right
+          mechanics on the right jobs.
         </p>
 
         {sent ? (

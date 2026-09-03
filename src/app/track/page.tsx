@@ -11,7 +11,12 @@ type Stage = {
 
 const STAGES: Stage[] = [
   { id: "received", label: "Request received", detail: "We have your job details." },
-  { id: "assigned", label: "Tech assigned", detail: "A Speedy tech is locked in." },
+  {
+    id: "matched",
+    label: "Matched by shop",
+    detail: "Marvin matched a qualified network mechanic — not auto-assigned.",
+  },
+  { id: "sent", label: "Sent out", detail: "Job sent to your matched mechanic." },
   { id: "enroute", label: "En route", detail: "Heading to your location." },
   { id: "working", label: "In progress", detail: "Wrenches turning on-site." },
   { id: "done", label: "Complete", detail: "Ready for pickup / sign-off." },
@@ -47,8 +52,8 @@ export default function TrackPage() {
         </p>
         <h1 className="section-title animate-rise-delay-1 mt-2">Track your job</h1>
         <p className="muted animate-rise-delay-2 mt-3 text-sm">
-          Enter your phone number or confirmation code to see where Speedy is on
-          your repair.
+          Enter your phone number or confirmation code. Status updates after
+          Marvin matches a qualified mechanic and sends the job out.
         </p>
 
         <form onSubmit={onSubmit} className="animate-rise-delay-3 mt-6 space-y-3">
