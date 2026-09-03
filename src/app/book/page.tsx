@@ -10,8 +10,9 @@ export default function BookPage() {
         </p>
         <h1 className="section-title animate-rise-delay-1 mt-2">Book your repair</h1>
         <p className="muted animate-rise-delay-2 mt-3 text-sm">
-          Schedule with Speedy through our online booking portal. Pick a time that
-          works — {SHOP.tagline}.
+          Book through ARI. After you book, Marvin matches a qualified Speedy
+          Network mechanic and sends the job out — no auto-assign.{" "}
+          {SHOP.tagline}.
         </p>
 
         <div className="panel animate-rise-delay-3 mt-6 space-y-4">

@@ -1,5 +1,6 @@
 export const SHOP = {
   name: "Speedy Mobile Auto Repair",
+  networkName: "Speedy Network",
   shortName: "Speedy",
   phone: "(704) 835-2577",
   phoneTel: "+17048352577",
@@ -22,6 +23,8 @@ export const SHOP = {
   textAvaSmsUrlAlt: "sms:+18284543014&body=START",
   textAvaWebUrl: "https://www.speedyauto704.com/text-ava",
   tagline: "we come to you or you come to us",
+  networkBlurb:
+    "A mechanic network — not a storefront wrapper. Apply with your qualifications; Marvin matches each job and sends it out. No auto-assign.",
 
   pricing: [
     "Front brakes from $375",

@@ -51,11 +51,13 @@ export default function LoginPage() {
     <AppShell>
       <div className="px-5 py-6">
         <p className="animate-rise text-xs font-medium tracking-[0.24em] text-[var(--gold)] uppercase">
-          Staff access
+          Marvin · Shop
         </p>
         <h1 className="section-title animate-rise-delay-1 mt-2">Shop login</h1>
         <p className="muted animate-rise-delay-2 mt-3 text-sm">
-          Sign in with the Speedy shop account to manage the day&apos;s jobs.
+          For Marvin and shop staff only — match customer jobs to qualified
+          network mechanics, then send-out. This login is not for customers and
+          does not auto-assign or auto-dispatch.
         </p>
 
         {authed ? (
@@ -65,15 +67,23 @@ export default function LoginPage() {
             </p>
             <p className="text-2xl text-[var(--gold-bright)]">{SHOP.shopLogin}</p>
             <p className="muted text-sm">
-              Shop dashboard preview — today&apos;s bookings, track board, and
-              applicant inbox will land here as you grow the app.
+              Shop desk: review bookings, match by qualifications, send the job
+              out. No auto-dispatch — you choose the mechanic.
             </p>
+            <ul className="space-y-2 text-sm text-[var(--ink-muted)]">
+              <li>1. Pull the customer job</li>
+              <li>2. Match a mechanic from Apply qualifications</li>
+              <li>3. Send-out when ready</li>
+            </ul>
             <div className="grid gap-3">
-              <Link href="/book" className="btn-gold">
-                Open booking portal
+              <Link href="/apply" className="btn-gold">
+                Review Apply inbox (preview)
               </Link>
               <Link href="/track" className="btn-ghost">
                 Job track board
+              </Link>
+              <Link href="/book" className="btn-ghost">
+                Open booking portal
               </Link>
               <button type="button" className="btn-ghost" onClick={logout}>
                 Sign out

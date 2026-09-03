@@ -28,7 +28,7 @@ export function AppShell({
               Speedy
             </p>
             <p className="text-[0.65rem] tracking-[0.16em] text-[var(--ink-muted)] uppercase">
-              Mobile Auto Repair
+              Network
             </p>
           </div>
         </Link>
