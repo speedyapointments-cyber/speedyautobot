@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { AppShell } from "@/components/AppShell";
 import { GarageCard } from "@/components/GarageCard";
+import { RoleHomeLinks, RoleSwitch } from "@/components/RoleSwitch";
 import { ShareActions } from "@/components/ShareActions";
 import { SHOP } from "@/lib/shop";
 import { SHARE } from "@/lib/share";
@@ -8,11 +9,10 @@ import { SHARE } from "@/lib/share";
 export default function HomePage() {
   return (
     <AppShell>
-      <section className="hero-wash relative min-h-[78dvh] overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(212,175,55,0.18),transparent_40%)]" />
-        <div className="relative flex min-h-[78dvh] flex-col justify-end px-5 pb-8 pt-16">
+      <section className="hero-wash relative min-h-[70dvh] overflow-hidden">
+        <div className="relative flex min-h-[70dvh] flex-col justify-end px-5 pb-8 pt-16">
           <p className="animate-rise text-xs font-medium tracking-[0.28em] text-[var(--gold)] uppercase">
-            Charlotte · Mobile &amp; Shop
+            Charlotte · Customers · Techs · Shop
           </p>
           <h1
             className="animate-rise-delay-1 mt-2 max-w-[12ch] text-[clamp(3.2rem,14vw,4.4rem)] leading-[0.88] font-semibold uppercase text-[var(--ink)]"
@@ -20,18 +20,15 @@ export default function HomePage() {
           >
             <span className="gold-text">Speedy</span>
             <br />
-            Mobile Auto Repair
+            Network
           </h1>
-          <p className="animate-rise-delay-2 mt-4 max-w-[28ch] text-[0.98rem] text-[var(--ink-muted)]">
-            {SHOP.tagline}. Independently owned. Excellence on every visit.
+          <p className="animate-rise-delay-2 mt-4 max-w-[32ch] text-[0.98rem] text-[var(--ink-muted)]">
+            One app. Customers book and pin the car. Mobile mechanics take jobs.
+            Shop owners dispatch. {SHOP.tagline}.
           </p>
-          <div className="animate-rise-delay-3 mt-7 flex flex-col gap-3">
-            <Link href="/book" className="btn-gold cta-pulse">
-              Book Service
-            </Link>
-            <Link href="/garage" className="btn-ghost">
-              My vehicle + maintenance
-            </Link>
+          <div className="animate-rise-delay-3 mt-6 space-y-3">
+            <RoleSwitch />
+            <RoleHomeLinks />
             <a href={`tel:${SHOP.phoneTel}`} className="btn-ghost">
               Call {SHOP.phone}
             </a>
@@ -44,24 +41,12 @@ export default function HomePage() {
       </section>
 
       <section className="px-5 pb-8">
-        <div className="panel animate-rise space-y-3">
+        <div className="panel space-y-3">
           <h2 className="section-title text-[1.9rem]!">Share this app</h2>
-          <p className="muted text-sm">
-            Send a friend https://www.speedyauto704.com/app
-          </p>
           <ShareActions title="Speedy Mobile Auto Repair" text={SHARE.customerText} url={SHARE.app} />
-        </div>
-      </section>
-
-      <section className="px-5 pb-8">
-        <div className="panel animate-rise">
-          <h2 className="section-title text-[1.9rem]!">Hours</h2>
-          <ul className="mt-4 space-y-2 text-sm">
-            <li>{SHOP.hours.weekdays}</li>
-            <li>{SHOP.hours.saturday}</li>
-            <li>{SHOP.hours.sunday}</li>
-          </ul>
-          <p className="muted mt-4 text-sm">{SHOP.address}</p>
+          <Link href="/for" className="text-sm text-[var(--gold-bright)] underline">
+            I am a mechanic or shop owner
+          </Link>
         </div>
       </section>
     </AppShell>
