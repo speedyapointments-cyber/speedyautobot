@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { AppShell } from "@/components/AppShell";
 import { InsuranceQuotes } from "@/components/InsuranceQuotes";
+import { TextStart } from "@/components/TextStart";
 
 export default function NetworkTermsPage() {
   return (
@@ -33,9 +34,11 @@ export default function NetworkTermsPage() {
             workers’ compensation from Speedy. Pay is per completed, approved ticket only.
           </p>
           <p className="muted text-sm">
-            Marvin assigns work. There is no auto-dispatch. You may decline jobs. You
+            Ava assigns work. There is no auto-dispatch. You may decline jobs. You
             may work for other shops. You bring your own tools, vehicle, and insurance.
+            Customers and vendors text Ava for 24-hour contact.
           </p>
+          <TextStart label="Text Ava" className="btn-ghost" />
         </section>
 
         <section className="panel space-y-3">
