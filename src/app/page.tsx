@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { AppShell } from "@/components/AppShell";
+import { GarageCard } from "@/components/GarageCard";
 import { ShareActions } from "@/components/ShareActions";
 import { SHOP } from "@/lib/shop";
 import { SHARE } from "@/lib/share";
@@ -28,27 +29,27 @@ export default function HomePage() {
             <Link href="/book" className="btn-gold cta-pulse">
               Book Service
             </Link>
+            <Link href="/garage" className="btn-ghost">
+              My vehicle + maintenance
+            </Link>
             <a href={`tel:${SHOP.phoneTel}`} className="btn-ghost">
               Call {SHOP.phone}
             </a>
-            <Link href="/recommend" className="btn-ghost">
-              Recommend Speedy
-            </Link>
           </div>
         </div>
       </section>
 
       <section className="px-5 py-8">
+        <GarageCard />
+      </section>
+
+      <section className="px-5 pb-8">
         <div className="panel animate-rise space-y-3">
           <h2 className="section-title text-[1.9rem]!">Share this app</h2>
           <p className="muted text-sm">
-            Send a friend https://www.speedyauto704.com/app — that is the clean link.
+            Send a friend https://www.speedyauto704.com/app
           </p>
-          <ShareActions
-            title="Speedy Mobile Auto Repair"
-            text={SHARE.customerText}
-            url={SHARE.app}
-          />
+          <ShareActions title="Speedy Mobile Auto Repair" text={SHARE.customerText} url={SHARE.app} />
         </div>
       </section>
 
@@ -61,34 +62,6 @@ export default function HomePage() {
             <li>{SHOP.hours.sunday}</li>
           </ul>
           <p className="muted mt-4 text-sm">{SHOP.address}</p>
-          <a
-            href={`tel:${SHOP.phoneTel}`}
-            className="mt-2 inline-block text-sm text-[var(--gold-bright)]"
-          >
-            {SHOP.phone}
-          </a>
-        </div>
-      </section>
-
-      <section className="px-5 pb-8">
-        <div className="panel animate-rise">
-          <h2 className="section-title text-[1.9rem]!">Pricing</h2>
-          <ul className="mt-4 space-y-3 text-sm">
-            {SHOP.pricing.map((item) => (
-              <li key={item} className="flex items-start gap-3">
-                <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[var(--gold)]" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <section className="px-5 pb-8">
-        <div className="panel animate-rise">
-          <h2 className="section-title text-[1.9rem]!">Pay</h2>
-          <p className="mt-4 text-sm">{SHOP.payAccepted.join(" · ")}</p>
-          <p className="muted mt-2 text-sm">{SHOP.payDeclined.join(". ")}.</p>
         </div>
       </section>
     </AppShell>

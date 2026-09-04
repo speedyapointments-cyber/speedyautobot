@@ -1,50 +1,34 @@
+import Link from "next/link";
 import { AppShell } from "@/components/AppShell";
+import { GarageCard } from "@/components/GarageCard";
 import { LocationCard } from "@/components/LocationCard";
 import { SHOP } from "@/lib/shop";
 
 export default function BookPage() {
   return (
     <AppShell>
-      <div className="px-5 py-6">
-        <p className="animate-rise text-xs font-medium tracking-[0.24em] text-[var(--gold)] uppercase">
-          Appointments
+      <div className="px-5 py-6 space-y-6">
+        <p className="text-xs font-medium tracking-[0.24em] text-[var(--gold)] uppercase">Appointments</p>
+        <h1 className="section-title">Book your repair</h1>
+        <p className="muted text-sm">
+          Pin the car, confirm what is due on this vehicle, then pick a time.
         </p>
-        <h1 className="section-title animate-rise-delay-1 mt-2">Book your repair</h1>
-        <p className="muted animate-rise-delay-2 mt-3 text-sm">
-          Pin your driveway or roadside first, then pick a time. {SHOP.tagline}.
-        </p>
-
-        <div className="mt-6">
-          <LocationCard title="Where should we come?" />
-        </div>
-
-        <div className="panel animate-rise-delay-3 mt-6 space-y-4">
-          <div>
-            <p className="text-xs tracking-[0.18em] text-[var(--ink-muted)] uppercase">
-              Booking partner
-            </p>
-            <p className="mt-1 text-lg text-[var(--gold-bright)]">ARI Portal</p>
-          </div>
-          <a
-            href={SHOP.bookUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-gold cta-pulse"
-          >
+        <GarageCard />
+        <LocationCard title="Where should we come?" />
+        <div className="panel space-y-4">
+          <p className="text-lg text-[var(--gold-bright)]">ARI Portal</p>
+          <a href={SHOP.bookUrl} target="_blank" rel="noopener noreferrer" className="btn-gold cta-pulse">
             Open Booking Portal
           </a>
           <a href={`tel:${SHOP.phoneTel}`} className="btn-ghost">
             Prefer to call? {SHOP.phone}
           </a>
+          <Link href="/garage" className="btn-ghost">
+            Update mileage first
+          </Link>
         </div>
-
-        <div className="mt-6 overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--bg-elevated)]">
-          <iframe
-            title="Speedy ARI booking"
-            src={SHOP.bookUrl}
-            className="h-[62vh] w-full bg-white"
-            allow="payment *; geolocation *"
-          />
+        <div className="overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--bg-elevated)]">
+          <iframe title="Speedy ARI booking" src={SHOP.bookUrl} className="h-[62vh] w-full bg-white" allow="payment *; geolocation *" />
         </div>
       </div>
     </AppShell>
