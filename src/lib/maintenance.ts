@@ -4,129 +4,71 @@ export type Vehicle = {
   year: string;
   make: string;
   model: string;
-  miles: number;
+  mileage: number;
   powertrain: Powertrain;
-  lastOilMiles: number | null;
+  vin: string;
   updatedAt: string;
 };
 
-export type MaintItem = {
+export type ServiceItem = {
   id: string;
   name: string;
-  everyMiles: number | null;
-  everyMonths: number | null;
+  everyMiles: number;
   note: string;
-  evOnly?: boolean;
-  skipEv?: boolean;
+  bookHint: string;
 };
 
-export const MAINT_ITEMS: MaintItem[] = [
-  {
-    id: "oil",
-    name: "Engine oil and filter",
-    everyMiles: 5000,
-    everyMonths: 6,
-    note: "5k is the safe Speedy interval. Follow the door-jamb sticker if the book says 7.5k or 10k synthetic.",
-    skipEv: true,
-  },
-  {
-    id: "rotate",
-    name: "Tire rotation + tread check",
-    everyMiles: 6000,
-    everyMonths: 6,
-    note: "EVs eat inner edges. Rotate on time.",
-  },
-  {
-    id: "brakes",
-    name: "Brake inspect (pads, slides, fluid)",
-    everyMiles: 10000,
-    everyMonths: 12,
-    note: "Measure pads. Do not guess from pedal feel alone.",
-  },
-  {
-    id: "cabin",
-    name: "Cabin filter",
-    everyMiles: 15000,
-    everyMonths: 12,
-    note: "Musty AC is usually this filter.",
-  },
-  {
-    id: "air",
-    name: "Engine air filter",
-    everyMiles: 20000,
-    everyMonths: 24,
-    note: "Shorter if you drive dirt or pollen season hard.",
-    skipEv: true,
-  },
-  {
-    id: "battery12",
-    name: "12-volt battery test",
-    everyMiles: null,
-    everyMonths: 24,
-    note: "EVs still have a 12-volt. A dead 12V looks like a dead car.",
-  },
-  {
-    id: "coolant",
-    name: "Coolant check / service",
-    everyMiles: 30000,
-    everyMonths: 36,
-    note: "On EVs this is the battery / inverter loop. Do not mix colors.",
-  },
-  {
-    id: "trans",
-    name: "Transmission / drive-unit fluid",
-    everyMiles: 30000,
-    everyMonths: 36,
-    note: "Confirm spec. Many “lifetime” fluids are not lifetime in heat.",
-  },
-  {
-    id: "plugs",
-    name: "Spark plugs",
-    everyMiles: 60000,
-    everyMonths: null,
-    note: "Coil-on-plug. Misfire under load is often this.",
-    skipEv: true,
-  },
-  {
-    id: "align",
-    name: "Alignment check",
-    everyMiles: 15000,
-    everyMonths: 12,
-    note: "After potholes or new tires.",
-  },
+const ICE: ServiceItem[] = [
+  { id: "oil", name: "Oil and filter", everyMiles: 5000, note: "Synthetic can stretch; we still check at 5k.", bookHint: "Oil / fluids" },
+  { id: "rotate", name: "Tire rotation + pressure", everyMiles: 7500, note: "Uneven wear is a comeback waiting.", bookHint: "Tires" },
+  { id: "brakes", name: "Brake inspection", everyMiles: 10000, note: "Pads, rotors, pins, fluid color.", bookHint: "Brakes" },
+  { id: "cabin", name: "Cabin filter", everyMiles: 15000, note: "Musty AC is usually this.", bookHint: "Oil / fluids" },
+  { id: "air", name: "Engine air filter", everyMiles: 20000, note: "Shorter if you drive dusty roads.", bookHint: "Oil / fluids" },
+  { id: "coolant", name: "Coolant check / service", everyMiles: 30000, note: "Do not mix colors.", bookHint: "Cooling" },
+  { id: "plugs", name: "Spark plugs", everyMiles: 60000, note: "Misfire and poor MPG if ignored.", bookHint: "Tune-up" },
+  { id: "trans", name: "Transmission service", everyMiles: 60000, note: "Fluid and filter where the unit allows.", bookHint: "Drivetrain" },
 ];
 
-export type DueRow = MaintItem & {
-  dueAtMiles: number | null;
-  milesLeft: number | null;
+const EV: ServiceItem[] = [
+  { id: "rotate", name: "Tire rotation + alignment check", everyMiles: 6500, note: "EV torque eats inside edges.", bookHint: "Tires" },
+  { id: "cabin", name: "Cabin filter", everyMiles: 15000, note: "Same as gas cars.", bookHint: "EV 12V / wheels" },
+  { id: "brake-fluid", name: "Brake fluid test", everyMiles: 30000, note: "Regen saves pads. Fluid still ages.", bookHint: "Brakes" },
+  { id: "thermal", name: "Battery thermal / coolant", everyMiles: 30000, note: "OEM interval wins. We inspect and quote.", bookHint: "EV / HV" },
+  { id: "12v", name: "12-volt support battery", everyMiles: 25000, note: "Most ‘dead EV’ no-starts are the little battery.", bookHint: "EV 12V" },
+  { id: "inspect", name: "Undercarriage + charge-port inspect", everyMiles: 15000, note: "Look for impact, rust, pin wear.", bookHint: "EV inspect" },
+];
+
+export function catalog(powertrain: Powertrain) {
+  if (powertrain === "ev") return EV;
+  if (powertrain === "hybrid") return [...ICE.filter((i) => i.id !== "plugs"), EV.find((i) => i.id === "thermal")!];
+  return ICE;
+}
+
+export type DueRow = ServiceItem & {
+  lastAt: number;
+  nextAt: number;
+  milesLeft: number;
   status: "due" | "soon" | "ok";
 };
 
-export function scheduleFor(vehicle: Vehicle): DueRow[] {
-  const items = MAINT_ITEMS.filter((item) => {
-    if (vehicle.powertrain === "ev" && item.skipEv) return false;
-    if (item.evOnly && vehicle.powertrain !== "ev") return false;
-    return true;
-  });
+export function schedule(vehicle: Vehicle): DueRow[] {
+  return catalog(vehicle.powertrain)
+    .map((item) => {
+      const cycle = Math.floor(vehicle.mileage / item.everyMiles);
+      const lastAt = cycle * item.everyMiles;
+      const nextAt = (cycle + 1) * item.everyMiles;
+      const milesLeft = nextAt - vehicle.mileage;
+      const status: DueRow["status"] =
+        milesLeft <= 200 ? "due" : milesLeft <= 1200 ? "soon" : "ok";
+      return { ...item, lastAt, nextAt, milesLeft, status };
+    })
+    .sort((a, b) => a.milesLeft - b.milesLeft);
+}
 
-  return items.map((item) => {
-    const baseline =
-      item.id === "oil" && vehicle.lastOilMiles != null
-        ? vehicle.lastOilMiles
-        : Math.floor(vehicle.miles / (item.everyMiles || vehicle.miles || 1)) *
-          (item.everyMiles || 0);
-    const dueAtMiles =
-      item.everyMiles != null
-        ? (item.id === "oil" && vehicle.lastOilMiles != null
-            ? vehicle.lastOilMiles + item.everyMiles
-            : baseline + item.everyMiles)
-        : null;
-    const milesLeft = dueAtMiles != null ? dueAtMiles - vehicle.miles : null;
-    let status: DueRow["status"] = "ok";
-    if (milesLeft != null) {
-      if (milesLeft <= 0) status = "due";
-      else if (milesLeft <= 800) status = "soon";
-    }
-    return { ...item, dueAtMiles, milesLeft, status };
-  });
+export function headline(rows: DueRow[]) {
+  const due = rows.filter((r) => r.status === "due");
+  const soon = rows.filter((r) => r.status === "soon");
+  if (due.length) return `${due.length} service${due.length > 1 ? "s" : ""} due now`;
+  if (soon.length) return `${soon[0].name} coming up in ${soon[0].milesLeft.toLocaleString()} miles`;
+  return "Nothing urgent. We will keep the list current as mileage moves.";
 }
