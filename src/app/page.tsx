@@ -29,24 +29,16 @@ export default function HomePage() {
           <div className="animate-rise-delay-3 mt-6 space-y-3">
             <RoleSwitch />
             <RoleHomeLinks />
-            <a href={`tel:${SHOP.phoneTel}`} className="btn-ghost">
-              Call {SHOP.phone}
-            </a>
+            <Link href="/board" className="btn-ghost">Message board</Link>
+            <a href={`tel:${SHOP.phoneTel}`} className="btn-ghost">Call {SHOP.phone}</a>
           </div>
         </div>
       </section>
-
-      <section className="px-5 py-8">
-        <GarageCard />
-      </section>
-
+      <section className="px-5 py-8"><GarageCard /></section>
       <section className="px-5 pb-8">
         <div className="panel space-y-3">
           <h2 className="section-title text-[1.9rem]!">Share this app</h2>
           <ShareActions title="Speedy Mobile Auto Repair" text={SHARE.customerText} url={SHARE.app} />
-          <Link href="/for" className="text-sm text-[var(--gold-bright)] underline">
-            I am a mechanic or shop owner
-          </Link>
         </div>
       </section>
     </AppShell>
