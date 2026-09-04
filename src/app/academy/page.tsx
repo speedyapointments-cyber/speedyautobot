@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { AppShell } from "@/components/AppShell";
 import { COURSES } from "@/lib/academy";
+import { EV_COURSES } from "@/lib/academy-ev";
+
+const ALL = [...COURSES, ...EV_COURSES];
 
 export default function AcademyPage() {
   return (
@@ -11,23 +14,20 @@ export default function AcademyPage() {
         </p>
         <h1 className="section-title">Get Speedy Certified</h1>
         <p className="muted text-sm">
-          Same idea as a brand academy: short on-demand levels, a scored quiz, a
-          certificate at the end. This is Speedy’s internal credential for Network
-          tickets. It is not ASE and it is not a state license. Pass the quiz at 80%,
-          then Marvin still does documents and a practical before live jobs.
+          Internal Speedy credential. Not ASE. Pass at 80%, then documents and a
+          practical. ICE pay is $22 / $38 / $55. EV pay is $35 / $52 / $75.
         </p>
 
         <div className="panel space-y-2">
-          <p className="text-sm text-[var(--gold-bright)]">How the levels work</p>
+          <p className="text-sm text-[var(--gold-bright)]">Two ladders</p>
           <p className="muted text-sm">
-            Level 1 quiz certificate = Fundamentals badge ($22 band after approval).
-            Level 2 is a practical install check on a real car ($38). Level 3 is rating
-            + volume or a specialist cert ($55 tap-out). Start with Network Standards.
+            Start with Network Standards. EV work also requires EV High-Voltage
+            Safety. A brakes badge does not authorize HV.
           </p>
         </div>
 
         <ul className="space-y-3">
-          {COURSES.map((course) => (
+          {ALL.map((course) => (
             <li key={course.slug}>
               <Link href={`/academy/${course.slug}`} className="panel block space-y-1">
                 <p className="text-xs uppercase tracking-[0.18em] text-[var(--gold)]">
