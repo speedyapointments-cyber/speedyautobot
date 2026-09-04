@@ -9,23 +9,14 @@ export default function AcademyPage() {
   return (
     <AppShell>
       <div className="px-5 py-6 space-y-5">
-        <p className="text-xs font-medium tracking-[0.24em] text-[var(--gold)] uppercase">
-          Speedy Academy
-        </p>
+        <p className="text-xs font-medium tracking-[0.24em] text-[var(--gold)] uppercase">Speedy Academy</p>
         <h1 className="section-title">Get Speedy Certified</h1>
         <p className="muted text-sm">
-          Internal Speedy credential. Not ASE. Pass at 80%, then documents and a
-          practical. ICE pay is $22 / $38 / $55. EV pay is $35 / $52 / $75.
+          Start with the entrance test if you want a level read. Then take Standards.
         </p>
-
-        <div className="panel space-y-2">
-          <p className="text-sm text-[var(--gold-bright)]">Two ladders</p>
-          <p className="muted text-sm">
-            Start with Network Standards. EV work also requires EV High-Voltage
-            Safety. A brakes badge does not authorize HV.
-          </p>
-        </div>
-
+        <Link href="/entrance" className="btn-gold">
+          Entrance test — gauge my experience
+        </Link>
         <ul className="space-y-3">
           {ALL.map((course) => (
             <li key={course.slug}>
@@ -41,10 +32,7 @@ export default function AcademyPage() {
             </li>
           ))}
         </ul>
-
-        <Link href="/apply" className="btn-ghost">
-          Apply after you pass Standards
-        </Link>
+        <Link href="/apply" className="btn-ghost">Apply after you pass Standards</Link>
       </div>
     </AppShell>
   );
