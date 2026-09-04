@@ -66,8 +66,8 @@ export default function ApplyPage() {
         <h1 className="section-title animate-rise-delay-1 mt-2">Apply as a vendor</h1>
         <p className="muted animate-rise-delay-2 mt-3 text-sm">
           Independent contractor work. Pending until Marvin approves you. No
-          auto-dispatch. Pay is a share of labor on completed tickets — 50% / 60% /
-          70% by skill level. Read the terms before you apply.
+          auto-dispatch. Labor pay is $22 to $55 per flagged hour by skill level.
+          $55 is the tap-out. Read the terms before you apply.
         </p>
         <Link href="/network-terms" className="mt-3 inline-block text-sm text-[var(--gold-bright)] underline">
           Full pay, vetting, and liability terms
@@ -92,9 +92,9 @@ export default function ApplyPage() {
             <div className="panel space-y-2">
               <p className="text-sm text-[var(--gold-bright)]">Pay at a glance</p>
               <p className="muted text-sm">
-                Level 1 Provisional 50% labor · Level 2 Network 60% · Level 3
-                Specialist 70%. Parts are not commissioned. +$25 after-hours roadside
-                bonus. 5% labor held 30 days for quality.
+                Level 1 Provisional $22 / flagged hour · Level 2 Network $38 ·
+                Level 3 Specialist $55 tap-out. Parts are not commissioned. +$25
+                after-hours roadside bonus. 5% labor pay held 30 days for quality.
               </p>
             </div>
 

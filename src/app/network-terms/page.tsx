@@ -20,9 +20,9 @@ export default function NetworkTermsPage() {
           <p className="muted text-sm">
             Speedy Network is a dispatch marketplace for independent mobile and
             shop vendors. Approved vendors are not employees, partners, or agents of
-            Speedy Mobile Auto Repair. There is no hourly wage, salary, overtime,
-            benefits, or workers’ compensation from Speedy. Pay is per completed,
-            approved ticket only.
+            Speedy Mobile Auto Repair. There is no hourly clock wage, salary,
+            overtime, benefits, or workers’ compensation from Speedy. Pay is per
+            completed, approved ticket only.
           </p>
           <p className="muted text-sm">
             Marvin assigns work. There is no auto-dispatch. You may decline jobs.
@@ -32,42 +32,45 @@ export default function NetworkTermsPage() {
         </section>
 
         <section className="panel space-y-3">
-          <h2 className="text-[var(--gold-bright)] text-lg">Labor split</h2>
+          <h2 className="text-[var(--gold-bright)] text-lg">Labor pay band</h2>
           <p className="muted text-sm">
-            Your cut is a percentage of the <strong className="text-[var(--ink)]">labor line only</strong>.
-            Parts, shop supplies, taxes, and card fees are not commissioned.
+            You are paid on <strong className="text-[var(--ink)]">flagged / book hours</strong> for
+            the job, not on clock time and not on a raw percent of a padded labor
+            line. The band is <strong className="text-[var(--ink)]">$22 to $55 per flagged hour</strong>.
+            $55 is the tap-out. Parts, shop supplies, tax, and card fees are not commissioned.
           </p>
           <ul className="muted text-sm space-y-2 list-disc pl-5">
             <li>
-              <strong className="text-[var(--ink)]">Level 1 — Provisional (50% labor)</strong>:
-              docs + interview approved. First 10 completed jobs.
+              <strong className="text-[var(--ink)]">Level 1 — Provisional: $22 / flagged hour</strong>.
+              Docs + interview approved. First 10 completed jobs.
             </li>
             <li>
-              <strong className="text-[var(--ink)]">Level 2 — Network (60% labor)</strong>:
+              <strong className="text-[var(--ink)]">Level 2 — Network: $38 / flagged hour</strong>.
               10 jobs, 4.6+ rating, insurance current, no safety flags.
             </li>
             <li>
-              <strong className="text-[var(--ink)]">Level 3 — Specialist (70% labor)</strong>:
-              25 jobs and 4.8+ rating, or a verified specialist cert plus a practical
-              check on that skill (tint, brakes install, no-start/scan, golf cart kits).
+              <strong className="text-[var(--ink)]">Level 3 — Specialist: $55 / flagged hour</strong>.
+              Tap-out. 25 jobs and 4.8+ rating, or a verified specialist cert plus a
+              practical check on that skill.
             </li>
           </ul>
           <p className="muted text-sm">
-            Raises are not annual. They follow skill approval, rating, and clean
-            comeback history. A new approved skill pays at your current level on that
-            skill’s tickets. Speedy can drop a level after two workmanship comebacks
-            or any insurance lapse.
+            Raises follow skill approval, rating, and clean comeback history. A new
+            approved skill pays at your current level on that skill’s tickets. Speedy
+            can drop a level after two workmanship comebacks or any insurance lapse.
+            Nobody is paid above $55 per flagged hour.
           </p>
         </section>
 
         <section className="panel space-y-3">
           <h2 className="text-[var(--gold-bright)] text-lg">Ticket math</h2>
           <ul className="muted text-sm space-y-2 list-disc pl-5">
-            <li>Example: $220 labor + $90 parts. Level 2 vendor earns $132. Parts are reimbursed at receipt cost if Speedy authorized the purchase.</li>
-            <li>Diagnostic / PMI uses the posted diagnostic fee at your labor split.</li>
+            <li>Example: brakes flagged at 2.0 hours. Level 2 vendor earns 2 × $38 = $76. Parts are reimbursed at receipt cost if Speedy authorized the purchase.</li>
+            <li>If the same job is flagged 2.0 hours at Level 3, pay is 2 × $55 = $110. That is the maximum labor payout for those hours.</li>
+            <li>Diagnostic / PMI uses the posted book time at your level rate.</li>
             <li>After-hours roadside (after 6pm or Sunday): +$25 trip bonus after the job is complete.</li>
             <li>Customer no-show after you arrive: 50% of the posted trip / diagnostic fee, if Speedy collects it.</li>
-            <li>5% of labor is held 30 days as a quality reserve, then released if there is no comeback on that ticket.</li>
+            <li>5% of labor pay is held 30 days as a quality reserve, then released if there is no comeback on that ticket.</li>
             <li>Payouts weekly by ACH after the customer is charged and the job is marked complete with photos.</li>
           </ul>
         </section>
