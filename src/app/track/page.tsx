@@ -2,6 +2,7 @@
 
 import { useMemo, useState, type FormEvent } from "react";
 import { AppShell } from "@/components/AppShell";
+import { LocationCard } from "@/components/LocationCard";
 
 type Stage = {
   id: string;
@@ -47,9 +48,12 @@ export default function TrackPage() {
         </p>
         <h1 className="section-title animate-rise-delay-1 mt-2">Track your job</h1>
         <p className="muted animate-rise-delay-2 mt-3 text-sm">
-          Enter your phone number or confirmation code to see where Speedy is on
-          your repair.
+          Confirm the pin, then enter your phone or confirmation code.
         </p>
+
+        <div className="mt-6">
+          <LocationCard title="Your pin" />
+        </div>
 
         <form onSubmit={onSubmit} className="animate-rise-delay-3 mt-6 space-y-3">
           <label className="block text-sm text-[var(--ink-muted)]" htmlFor="track-query">
@@ -89,17 +93,9 @@ export default function TrackPage() {
                         }`}
                       />
                     ) : null}
-                    <span
-                      className={`track-dot relative z-10 mt-1 ${
-                        done ? "done" : current ? "current" : ""
-                      }`}
-                    />
+                    <span className={`track-dot relative z-10 mt-1 ${done ? "done" : current ? "current" : ""}`} />
                     <div>
-                      <p
-                        className={`text-sm font-medium ${
-                          done || current ? "text-[var(--ink)]" : "text-[#6a6358]"
-                        }`}
-                      >
+                      <p className={`text-sm font-medium ${done || current ? "text-[var(--ink)]" : "text-[#6a6358]"}`}>
                         {stage.label}
                       </p>
                       <p className="text-xs text-[var(--ink-muted)]">{stage.detail}</p>

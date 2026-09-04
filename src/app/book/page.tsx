@@ -1,4 +1,5 @@
 import { AppShell } from "@/components/AppShell";
+import { LocationCard } from "@/components/LocationCard";
 import { SHOP } from "@/lib/shop";
 
 export default function BookPage() {
@@ -10,9 +11,12 @@ export default function BookPage() {
         </p>
         <h1 className="section-title animate-rise-delay-1 mt-2">Book your repair</h1>
         <p className="muted animate-rise-delay-2 mt-3 text-sm">
-          Schedule with Speedy through our online booking portal. Pick a time that
-          works — {SHOP.tagline}.
+          Pin your driveway or roadside first, then pick a time. {SHOP.tagline}.
         </p>
+
+        <div className="mt-6">
+          <LocationCard title="Where should we come?" />
+        </div>
 
         <div className="panel animate-rise-delay-3 mt-6 space-y-4">
           <div>
@@ -42,19 +46,6 @@ export default function BookPage() {
             allow="payment *; geolocation *"
           />
         </div>
-
-        <p className="muted mt-4 text-center text-xs">
-          If the portal doesn&apos;t load here,{" "}
-          <a
-            href={SHOP.bookUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[var(--gold)] underline"
-          >
-            open it in a new tab
-          </a>
-          .
-        </p>
       </div>
     </AppShell>
   );
