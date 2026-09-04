@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { AppShell } from "@/components/AppShell";
+import { ShareActions } from "@/components/ShareActions";
 import { SHOP } from "@/lib/shop";
+import { SHARE } from "@/lib/share";
 
 export default function HomePage() {
   return (
@@ -29,11 +31,28 @@ export default function HomePage() {
             <a href={`tel:${SHOP.phoneTel}`} className="btn-ghost">
               Call {SHOP.phone}
             </a>
+            <Link href="/recommend" className="btn-ghost">
+              Recommend Speedy
+            </Link>
           </div>
         </div>
       </section>
 
       <section className="px-5 py-8">
+        <div className="panel animate-rise space-y-3">
+          <h2 className="section-title text-[1.9rem]!">Share this app</h2>
+          <p className="muted text-sm">
+            Send a friend https://www.speedyauto704.com/app — that is the clean link.
+          </p>
+          <ShareActions
+            title="Speedy Mobile Auto Repair"
+            text={SHARE.customerText}
+            url={SHARE.app}
+          />
+        </div>
+      </section>
+
+      <section className="px-5 pb-8">
         <div className="panel animate-rise">
           <h2 className="section-title text-[1.9rem]!">Hours</h2>
           <ul className="mt-4 space-y-2 text-sm">
