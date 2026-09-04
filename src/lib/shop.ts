@@ -3,6 +3,7 @@ export const SHOP = {
   shortName: "Speedy",
   phone: "(704) 835-2577",
   phoneTel: "+17048352577",
+  phoneSms: "17048352577",
   email: "speedyapointments@gmail.com",
   website: "https://www.speedyauto704.com",
   city: "Charlotte, NC",
@@ -17,6 +18,7 @@ export const SHOP = {
   shopPassword: "speedy704",
   bookUrl: "https://portal.ari.app/b/kCHD15A2N0Vobeo5jdgZhwQBJTA3",
   tagline: "we come to you or you come to us",
+  smsBody: "Need 24-hour roadside / repair. This is my location and what happened:",
   pricing: [
     "Front brakes from $375",
     "Rear brakes from $385",
@@ -27,3 +29,7 @@ export const SHOP = {
   payAccepted: ["Cash App", "Venmo", "Apple Pay", "Tap to Pay", "PayPal"],
   payDeclined: ["No Zelle", "No checks"],
 } as const;
+
+export function smsHref(body = SHOP.smsBody) {
+  return `sms:+${SHOP.phoneSms}?&body=${encodeURIComponent(body)}`;
+}
