@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { AppShell } from "@/components/AppShell";
 import { LocationCard } from "@/components/LocationCard";
+import { TextStart } from "@/components/TextStart";
 
 const JOBS = [
   { id: "SPDY-1042", title: "Front brakes — driveway", where: "University City", flags: 2.0, rate: 38, status: "Offered" },
@@ -22,12 +23,14 @@ export default function TechPage() {
         <h1 className="section-title">Tech board</h1>
         <p className="muted text-sm">
           Independent vendor view. You are not on a clock wage. Accept only jobs
-          you are approved for. Marvin still assigns the first live tickets.
+          you are approved for. Ava assigns the first live tickets. Text Ava for dispatch.
         </p>
 
         <button type="button" className={online ? "btn-gold" : "btn-ghost"} onClick={() => setOnline((v) => !v)}>
           {online ? "Available for dispatch" : "Go available"}
         </button>
+
+        <TextStart label="Text Ava" className="btn-ghost" />
 
         <LocationCard title="Your truck pin" />
 
