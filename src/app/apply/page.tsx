@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState, type FormEvent } from "react";
 import { AppShell } from "@/components/AppShell";
+import { InsuranceQuotes } from "@/components/InsuranceQuotes";
 
 const SKILLS = [
   "Brakes (install)",
@@ -69,9 +70,14 @@ export default function ApplyPage() {
           auto-dispatch. Labor pay is $22 to $55 per flagged hour by skill level.
           $55 is the tap-out. Read the terms before you apply.
         </p>
-        <Link href="/network-terms" className="mt-3 inline-block text-sm text-[var(--gold-bright)] underline">
-          Full pay, vetting, and liability terms
-        </Link>
+        <div className="mt-3 flex flex-col gap-2 text-sm">
+          <Link href="/network-terms" className="text-[var(--gold-bright)] underline">
+            Full pay, vetting, and liability terms
+          </Link>
+          <Link href="/academy" className="text-[var(--gold-bright)] underline">
+            Speedy Academy certification
+          </Link>
+        </div>
 
         {sent ? (
           <div className="panel animate-rise mt-6">
@@ -83,8 +89,8 @@ export default function ApplyPage() {
             </p>
             <p className="muted mt-2 text-sm">
               Thanks, {form.name}. You are pending. Do not take Speedy jobs yet.
-              The shop will request your document pack, background-check consent,
-              and a skills check before any ticket is assigned.
+              Send your insurance certificate when you have it. The shop will request
+              the rest of the document pack and a skills check before any ticket.
             </p>
           </div>
         ) : (
@@ -97,6 +103,8 @@ export default function ApplyPage() {
                 after-hours roadside bonus. 5% labor pay held 30 days for quality.
               </p>
             </div>
+
+            <InsuranceQuotes />
 
             <Field label="Full legal name" id="apply-name" required>
               <input
