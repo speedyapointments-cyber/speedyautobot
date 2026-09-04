@@ -1,6 +1,7 @@
 export const SHOP = {
   name: "Speedy Mobile Auto Repair",
   shortName: "Speedy",
+  contactName: "Ava",
   phone: "(704) 835-2577",
   phoneTel: "+17048352577",
   phoneSms: "17048352577",
@@ -18,7 +19,7 @@ export const SHOP = {
   shopPassword: "speedy704",
   bookUrl: "https://portal.ari.app/b/kCHD15A2N0Vobeo5jdgZhwQBJTA3",
   tagline: "we come to you or you come to us",
-  smsBody: "Need 24-hour roadside / repair. This is my location and what happened:",
+  smsBody: "Hi Ava — need 24-hour roadside / repair. This is my location and what happened:",
   pricing: [
     "Front brakes from $375",
     "Rear brakes from $385",

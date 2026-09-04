@@ -1,9 +1,9 @@
 "use client";
 
-import { smsHref } from "@/lib/shop";
+import { SHOP, smsHref } from "@/lib/shop";
 
 export function TextStart({
-  label = "24-hour text",
+  label = `Text ${SHOP.contactName}`,
   className = "btn-gold",
 }: {
   label?: string;
