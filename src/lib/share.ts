@@ -9,7 +9,7 @@ export const SHARE = {
   customerText:
     "Speedy Mobile Auto Repair in Charlotte — they come to you or you go to the shop. Book here: https://www.speedyauto704.com/app",
   mechanicText:
-    "Hiring independent techs in Charlotte. Apply + Speedy Academy: https://www.speedyauto704.com/mechanic",
+    "Speedy Mobile Auto Repair is filling a mechanic, tint, and detail roster. Independent vendors. Apply: https://www.speedyauto704.com/mechanic",
 } as const;
 
 export function smsHref(text: string) {
