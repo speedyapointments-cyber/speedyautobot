@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { AppShell } from "@/components/AppShell";
+import { FeedbackBox } from "@/components/FeedbackBox";
 import { Logo } from "@/components/Logo";
 import { FAQ } from "@/lib/faq";
 
@@ -11,7 +12,7 @@ export default function FaqPage() {
         <p className="text-xs font-medium tracking-[0.24em] text-[var(--gold)] uppercase">Questions</p>
         <h1 className="section-title">FAQ</h1>
         <p className="muted text-sm">
-          Straight answers for the roster. Brand stays Speedy. This is not legal advice.
+          Written answers first. If it is still wrong or the app broke, use the box at the bottom.
         </p>
         <ul className="space-y-3">
           {FAQ.map((item) => (
@@ -21,8 +22,9 @@ export default function FaqPage() {
             </li>
           ))}
         </ul>
+        <FeedbackBox defaultTopic="Ask Speedy" />
         <Link href="/apply" className="btn-gold">Open the start checklist</Link>
-        <Link href="/board" className="btn-ghost">Message board</Link>
+        <Link href="/board" className="btn-ghost">Full message board</Link>
       </div>
     </AppShell>
   );
