@@ -1,5 +1,6 @@
 export type BoardTopic =
   | "Ask Speedy"
+  | "App feedback"
   | "Customers"
   | "Mechanics"
   | "EV"
@@ -17,7 +18,17 @@ export type BoardPost = {
   replies: { id: string; author: string; official: boolean; body: string; createdAt: string }[];
 };
 
-export const TOPICS: BoardTopic[] = ["Ask Speedy", "Customers", "Mechanics", "EV", "Roadside", "Shop talk"];
+export const TOPICS: BoardTopic[] = [
+  "Ask Speedy",
+  "App feedback",
+  "Customers",
+  "Mechanics",
+  "EV",
+  "Roadside",
+  "Shop talk",
+];
+
+export const BOARD_KEY = "speedy.board.v1";
 
 export const SEED: BoardPost[] = [
   {
@@ -39,20 +50,20 @@ export const SEED: BoardPost[] = [
     ],
   },
   {
-    id: "b-book",
-    topic: "Customers",
-    title: "Do you come to the house or do I drop it?",
-    body: "Car is in the driveway and will not crank.",
-    author: "Customer",
+    id: "b-app",
+    topic: "App feedback",
+    title: "Text Start did not open Messages",
+    body: "Tapped the gold button on iPhone and nothing happened.",
+    author: "Guest",
     official: false,
-    createdAt: "2026-09-02T11:00:00.000Z",
+    createdAt: "2026-09-04T18:00:00.000Z",
     replies: [
       {
-        id: "b-book-r1",
+        id: "b-app-r1",
         author: "Speedy",
         official: true,
-        body: "Both. Pin the car in the app. If it is in the 25-mile radius we come to you. Or bring it to 6016 McDaniel Lane Suite D.",
-        createdAt: "2026-09-02T11:12:00.000Z",
+        body: "Use /text if the button fails. Draft should already say Start. Tell us phone model if it still dies.",
+        createdAt: "2026-09-04T18:12:00.000Z",
       },
     ],
   },
@@ -69,44 +80,8 @@ export const SEED: BoardPost[] = [
         id: "b-pay-r1",
         author: "Speedy",
         official: true,
-        body: "L2 is $38 a flagged hour. Two hours = $76 labor to you. Parts are not commissioned. EV is a different ladder.",
+        body: "L2 is $38 a flagged hour. Two hours = $76 labor to you. Parts are not commissioned.",
         createdAt: "2026-09-03T09:08:00.000Z",
-      },
-    ],
-  },
-  {
-    id: "b-ev",
-    topic: "EV",
-    title: "Can any L2 take a high-voltage isolation?",
-    body: "I do brakes on Teslas. That is HV right?",
-    author: "Applicant",
-    official: false,
-    createdAt: "2026-09-03T16:00:00.000Z",
-    replies: [
-      {
-        id: "b-ev-r1",
-        author: "Speedy",
-        official: true,
-        body: "No. Pads on an EV is not HV. Isolation and orange-cable work needs EV skill + in-date gloves. Entrance test and EV Academy first.",
-        createdAt: "2026-09-03T16:10:00.000Z",
-      },
-    ],
-  },
-  {
-    id: "b-road",
-    topic: "Roadside",
-    title: "Do you take insurance roadside or only cash?",
-    body: "I have a club card.",
-    author: "Customer",
-    official: false,
-    createdAt: "2026-09-04T10:00:00.000Z",
-    replies: [
-      {
-        id: "b-road-r1",
-        author: "Speedy",
-        official: true,
-        body: "We can work club and insurance jobs once the vendor is set up. Call (704) 835-2577 if you are on the shoulder now.",
-        createdAt: "2026-09-04T10:06:00.000Z",
       },
     ],
   },
