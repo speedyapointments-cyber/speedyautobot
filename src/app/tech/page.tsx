@@ -23,14 +23,14 @@ export default function TechPage() {
         <h1 className="section-title">Tech board</h1>
         <p className="muted text-sm">
           Independent vendor view. You are not on a clock wage. Accept only jobs
-          you are approved for. Ava assigns the first live tickets. Text Ava for dispatch.
+          you are approved for. 24-hour customer service assigns the first live tickets.
         </p>
 
         <button type="button" className={online ? "btn-gold" : "btn-ghost"} onClick={() => setOnline((v) => !v)}>
           {online ? "Available for dispatch" : "Go available"}
         </button>
 
-        <TextStart label="Text Ava" className="btn-ghost" />
+        <TextStart label="Text Start" className="btn-ghost" />
 
         <LocationCard title="Your truck pin" />
 
