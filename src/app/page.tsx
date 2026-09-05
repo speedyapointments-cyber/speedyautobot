@@ -13,7 +13,7 @@ export default function HomePage() {
       <section className="hero-wash relative min-h-[70dvh] overflow-hidden">
         <div className="relative flex min-h-[70dvh] flex-col justify-end px-5 pb-8 pt-16">
           <p className="animate-rise text-xs font-medium tracking-[0.28em] text-[var(--gold)] uppercase">
-            Charlotte · Text Ava · 24-hour
+            Charlotte · 24-hour customer service
           </p>
           <h1
             className="animate-rise-delay-1 mt-2 max-w-[12ch] text-[clamp(3.2rem,14vw,4.4rem)] leading-[0.88] font-semibold uppercase text-[var(--ink)]"
@@ -24,10 +24,11 @@ export default function HomePage() {
             Network
           </h1>
           <p className="animate-rise-delay-2 mt-4 max-w-[32ch] text-[0.98rem] text-[var(--ink-muted)]">
-            Text Ava for 24-hour help. Messages opens with a starter note. After-hours roadside is $125.
+            24-hour customer service. Tap Text Start and Messages opens with Start already in the box.
+            After-hours roadside is $125.
           </p>
           <div className="animate-rise-delay-3 mt-6 space-y-3">
-            <TextStart label="Text Ava" />
+            <TextStart label="Text Start" />
             <RoleSwitch />
             <RoleHomeLinks />
             <Link href="/board" className="btn-ghost">Message board</Link>

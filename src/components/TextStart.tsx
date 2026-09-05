@@ -1,17 +1,18 @@
 "use client";
 
-import { SHOP, smsHref } from "@/lib/shop";
+import { smsHref } from "@/lib/shop";
 
 export function TextStart({
-  label = `Text ${SHOP.contactName}`,
+  label = "Text Start",
   className = "btn-gold",
 }: {
   label?: string;
   className?: string;
 }) {
-  const href = smsHref();
+  const href = smsHref("Start");
 
-  function openSms() {
+  function openSms(e: React.MouseEvent<HTMLAnchorElement>) {
+    e.preventDefault();
     window.location.href = href;
   }
 
